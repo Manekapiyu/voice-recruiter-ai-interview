@@ -1,13 +1,33 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@supabase/supabase-js";
+
+// Make sure Supabase is initialized (replace with your keys)
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const Login = () => {
+  /**
+   * Used to Sign in with Google
+   */
+  const signInWithGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+
+    if (error) {
+      console.log("Error: ", error.message);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center bg-gray-50 min-h-screen">
       {/* Login Card */}
       <div className="mt-16 flex flex-col items-center border rounded-2xl shadow-lg p-8 bg-white w-full max-w-md">
-        
         {/* Logo + Brand Name */}
         <div className="flex items-center mb-2">
           <Image
@@ -38,7 +58,12 @@ const Login = () => {
           <p className="text-gray-500 text-center mt-1">
             Sign in with Google Authentication
           </p>
-          <Button className="mt-4 w-full bg-blue-500 hover:bg-indigo-600 text-white">Login with Google</Button>
+          <Button
+            className="mt-4 w-full bg-blue-500 hover:bg-indigo-600 text-white"
+            onClick={signInWithGoogle}
+          >
+            Login with Google
+          </Button>
         </div>
       </div>
     </div>
