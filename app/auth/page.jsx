@@ -59,7 +59,7 @@ const Login = () => {
             Sign in with Google Authentication
           </p>
           <Button
-            className="mt-4 w-full bg-blue-500 hover:bg-indigo-600 text-white"
+            className="mt-4 w-full bg-blue-700 hover:bg-indigo-500 text-white"
             onClick={signInWithGoogle}
           >
             Login with Google
