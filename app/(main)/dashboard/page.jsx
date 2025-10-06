@@ -1,9 +1,13 @@
-import React from 'react'
+"use client";
 
-const Dashboard = () => {
+import React from "react";
+import Provider from "@/provider"; // make sure this path is correct
+import WelcomeContainer from "./_components/WelcomeContainer";
+
+export default function Dashboard() {
   return (
-    <div>Dashboard</div>
-  )
+    <Provider>
+      <WelcomeContainer />
+    </Provider>
+  );
 }
-
-export default Dashboard
