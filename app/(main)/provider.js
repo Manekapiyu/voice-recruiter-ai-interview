@@ -1,6 +1,7 @@
 import React from "react";
 import { SidebarProvider,SidebarTrigger } from "@/components/ui/sidebar";
-import AppSidebar from "../(main)/_components/AppSidebar";
+import AppSidebar from "./_components/AppSidebar";
+
 
 
 
@@ -8,7 +9,7 @@ const DashboardProvider = ({ children }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div>
+      <div className="w-full">
         <SidebarTrigger />
         {children}
         </div>
