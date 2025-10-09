@@ -18,9 +18,8 @@ import { SideBarOptions } from "@/services/Constants";
 import { usePathname } from "next/navigation";
 
 export default function AppSidebar() {
-
-  const path=usePathname();
-  console.log (path);
+  const path = usePathname();
+  console.log(path);
   return (
     <Sidebar>
       <SidebarHeader className="flex flex-col items-center mt-4">
@@ -31,20 +30,33 @@ export default function AppSidebar() {
             <span className="text-blue-400">Vox</span>
           </h1>
         </div>
-        <Button className="w-[90%] mt-5">
-          <Plus className="mr-2" /> Create New Interview
-        </Button>
+        <Link href="/dashboard/create-interview">
+          <Button className="w-[90%] mt-5">
+            <Plus className="mr-2" /> Create New Interview
+          </Button>
+        </Link>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
             {SideBarOptions.map((option, index) => (
-              <SidebarMenuItem key={index} className='p-1'>
-                <SidebarMenuButton asChild className={`p-5 ${path == option.path && 'bg-blue-50'}`}>
-                  <Link href={option.path} >
-                    <option.icon className= {`${path == option.path && 'text-primary'}`}/>
-                    <span className={` font- medium text-[16px] ${path == option.path && 'text-primary'}`}>{option.name}</span>
+              <SidebarMenuItem key={index} className="p-1">
+                <SidebarMenuButton
+                  asChild
+                  className={`p-5 ${path == option.path && "bg-blue-50"}`}
+                >
+                  <Link href={option.path}>
+                    <option.icon
+                      className={`${path == option.path && "text-primary"}`}
+                    />
+                    <span
+                      className={` font- medium text-[16px] ${
+                        path == option.path && "text-primary"
+                      }`}
+                    >
+                      {option.name}
+                    </span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
