@@ -8,7 +8,7 @@ export const SideBarOptions = [
   },
   {
     name: 'Scheduled Interview',
-    icon: Calendar, // ✅ Corrected spelling
+    icon: Calendar, 
     path: '/scheduled-interview'
   },
   {
@@ -24,6 +24,33 @@ export const SideBarOptions = [
   {
     name: 'Settings',
     icon: Settings,
-    path: '/settings' // ✅ Fixed typo from '/settingd'
+    path: '/settings' 
   },
 ];
+
+import { Code2Icon, User2Icon, BriefcaseBusinessIcon, Puzzle, CrownIcon } from "lucide-react";
+
+export const InterviewType = [
+  {
+    title: "Technical",
+    icon: Code2Icon,
+  },
+  {
+    title: "Behavioral",
+    icon: User2Icon,
+  },
+  {
+    title: "Experience",
+    icon: BriefcaseBusinessIcon,
+  },
+  {
+    title: "Problem Solving",
+    icon: Puzzle,
+  },
+  {
+    title: "Leadership",
+    icon: CrownIcon,
+  },
+];
+
+
