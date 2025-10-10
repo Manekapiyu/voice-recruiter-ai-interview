@@ -18,8 +18,9 @@ import { SideBarOptions } from "@/services/Constants";
 import { usePathname } from "next/navigation";
 
 export default function AppSidebar() {
-  const path = usePathname();
-  console.log(path);
+
+  const path=usePathname();
+  console.log (path);
   return (
     <Sidebar>
       <SidebarHeader className="flex flex-col items-center mt-4">
@@ -30,11 +31,9 @@ export default function AppSidebar() {
             <span className="text-blue-400">Vox</span>
           </h1>
         </div>
-        <Link href="/dashboard/create-interview">
-          <Button className="w-[90%] mt-5">
-            <Plus className="mr-2" /> Create New Interview
-          </Button>
-        </Link>
+        <Button className="w-[90%] mt-5">
+          <Plus className="mr-2" /> Create New Interview
+        </Button>
       </SidebarHeader>
 
       <SidebarContent>

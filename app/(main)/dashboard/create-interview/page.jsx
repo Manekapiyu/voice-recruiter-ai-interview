@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {ArrowLeft} from 'lucide-react';
 import { useRouter } from "next/navigation";
 import { Progress } from "@radix-ui/react-progress";
+import FormContainer from "./_components/FormContainer";
 
 export default function CreateInterview() {
   const router=useRouter();
@@ -20,8 +21,9 @@ export default function CreateInterview() {
       <progress
   value={ step * 33.33}
   max={100}
-  className="my-5 w-full h-3 rounded-lg overflow-hidden"
+  className="my-5 ml-10  w-4xl h-3 rounded-lg overflow-hidden"
 />
+<FormContainer/>
 
       
     </div>
