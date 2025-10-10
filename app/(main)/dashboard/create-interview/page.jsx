@@ -1,31 +1,33 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
-import {ArrowLeft} from 'lucide-react';
+import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Progress } from "@radix-ui/react-progress";
 import FormContainer from "./_components/FormContainer";
 
 export default function CreateInterview() {
-  const router=useRouter();
-  const [step,setStep]=useState(1);
+  const router = useRouter();
+  const [step, setStep] = useState(1);
+  const [formData, setFormDate] = useState();
+  const onHandleInputChange = (field, value) => {
+    setFormDate((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
   return (
     <div className="mt-10 px-10 ">
       <div className="flex gap-5 items-center">
-        <ArrowLeft onClick={()=> router.back()} className="cursor-pointer"/>
+        <ArrowLeft onClick={() => router.back()} className="cursor-pointer" />
         <h2 className="font-bold text-2xl">Create New Interview</h2>
-        
-
-
       </div>
       <progress
-  value={ step * 33.33}
-  max={100}
-  className="my-5 ml-10  w-4xl h-3 rounded-lg overflow-hidden"
-/>
-<FormContainer/>
-
-      
+        value={step * 33.33}
+        max={100}
+        className="my-5 ml-10  w-4xl h-3 rounded-lg overflow-hidden"
+      />
+      <FormContainer onHandleInputChange={onHandleInputChange}/>
     </div>
   );
 }

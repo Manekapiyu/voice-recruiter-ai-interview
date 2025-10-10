@@ -1,33 +1,83 @@
+"use client";
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { InterviewType } from "@/services/Constants";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
-function FormContainer() {
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+function FormContainer({onHandleInputChange}) {
   return (
-    <div className="p-5 bg-gray-50 rounded-lg shadow-sm">
+    <div className="p-6 m-5 bg-blue-50/40 rounded-lg shadow-sm">
+      {/* Job Position */}
       <div>
-        <h2 className="text-sm font-medium">Job Position</h2>
+        <h2 className="text-base font-medium text-gray-900">Job Position</h2>
         <Input
           placeholder="e.g. Full Stack Developer"
           className="mt-2"
+          onChange={(event)=>onHandleInputChange('jobPosition',event.target.value)}
         />
       </div>
 
+      {/* Job Description */}
       <div className="mt-5">
-        <h2 className="text-sm font-medium">Job Description</h2>
+        <h2 className="text-base font-medium text-gray-900">Job Description</h2>
         <Textarea
           placeholder="Enter detailed job description"
-          className="h-[200px] mt-2"
+          className="h-[200px] mt-2 "
+          onChange={(event)=>onHandleInputChange('jobDescription',event.target.value)}
         />
       </div>
-      <div className="mt-5">
-        <h2 className="text-sm font-medium">Interview Duration</h2>
-        <Textarea
 
-          className="h-[200px] mt-2"
-        />
+      {/* Interview Duration */}
+      <div className="mt-5">
+        <h2 className="text-base font-medium text-gray-900">Interview Duration</h2>
+        <Select >
+          <SelectTrigger className="w-full mt-2">
+            <SelectValue placeholder="Select Duration" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="5">5 Min</SelectItem>
+            <SelectItem value="15">15 Min</SelectItem>
+            <SelectItem value="30">30 Min</SelectItem>
+            <SelectItem value="45">45 Min</SelectItem>
+            <SelectItem value="60">60 Min</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
-    </div>
+
+      {/* Interview Type */}
+      <div className="mt-6">
+        <h2 className="text-base font-medium text-gray-900 mb-2">Interview Type</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-2">
+          {InterviewType.map((type, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-blue-100/50 transition"
+            >
+              <type.icon className="w-5 h-5 text-blue-600" />
+              <span className="text-sm font-medium text-gray-900">
+                {type.title}
+              </span>
+            </div>
+          ))}
+        </div>
+        </div>
+     <div className="mt-7 flex justify-end">
+  <Button>
+    Generate Question <ArrowRight className="ml-2 h-4 w-4" />
+  </Button>
+</div>
+</div>
   );
 }
 
