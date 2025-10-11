@@ -14,7 +14,9 @@ export default function CreateInterview() {
     setFormDate((prev) => ({
       ...prev,
       [field]: value,
-    }));
+    }))
+
+    console.log("FormData",formData)
   };
   return (
     <div className="mt-10 px-10 ">
