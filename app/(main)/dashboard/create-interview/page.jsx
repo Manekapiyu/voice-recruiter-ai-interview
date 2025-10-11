@@ -5,8 +5,9 @@ import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Progress } from "@radix-ui/react-progress";
 import FormContainer from "./_components/FormContainer";
-
-export default function CreateInterview() {
+import QuestionList from "./_components/QuestionList";
+import { toast } from "sonner";
+function CreateInterview() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [formData, setFormDate] = useState();
@@ -15,7 +16,24 @@ export default function CreateInterview() {
       ...prev,
       [field]: value,
     }));
+
+    console.log("FormData", formData);
   };
+
+  const onGoToNext = () => {
+  if (
+    !formData?.jobPosition ||
+    !formData?.jobDescription ||
+    !formData?.duration ||
+    !formData?.type
+  ) {
+    toast.error("Please enter all details!");
+    return;
+  }
+  setStep(step + 1);
+};
+
+
   return (
     <div className="mt-10 px-10 ">
       <div className="flex gap-5 items-center">
@@ -27,7 +45,16 @@ export default function CreateInterview() {
         max={100}
         className="my-5 ml-10  w-4xl h-3 rounded-lg overflow-hidden"
       />
-      <FormContainer onHandleInputChange={onHandleInputChange}/>
+      {step == 1 ? (
+        <FormContainer
+          onHandleInputChange={onHandleInputChange}
+          GoToNext={() => onGoToNext()}
+        />
+      ) : step == 2 ? (
+        <QuestionList  formData={formData}/>
+      ) : null}
     </div>
   );
 }
+
+export default CreateInterview;
