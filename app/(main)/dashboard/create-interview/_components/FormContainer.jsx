@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function FormContainer({ onHandleInputChange }) {
+function FormContainer({ onHandleInputChange ,GoToNext }) {
   const [interviewType, setInterviewType] = useState([]);
 
   useEffect(() => {
@@ -104,7 +104,7 @@ function FormContainer({ onHandleInputChange }) {
         </div>
       </div>
 
-      <div className="mt-7 flex justify-end">
+      <div className="mt-7 flex justify-end" onClick={()=>GoToNext()}>
         <Button>
           Generate Question <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
