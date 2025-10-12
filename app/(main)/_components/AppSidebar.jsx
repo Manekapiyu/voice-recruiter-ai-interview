@@ -31,9 +31,11 @@ export default function AppSidebar() {
             <span className="text-blue-400">Vox</span>
           </h1>
         </div>
-        <Button className="w-[90%] mt-5">
-          <Plus className="mr-2" /> Create New Interview
-        </Button>
+        <Link href="/dashboard/create-interview" className="w-[90%] mt-5">
+      <Button className="w-full">
+        <Plus className="mr-2" /> Create New Interview
+      </Button>
+    </Link>
       </SidebarHeader>
 
       <SidebarContent>
