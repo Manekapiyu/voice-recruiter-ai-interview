@@ -40,7 +40,6 @@ const Login = () => {
           </h1>
         </div>
 
-        {/* Login Illustration + Info */}
         <div className="flex flex-col items-center ">
           <Image
             src="/login.png"
