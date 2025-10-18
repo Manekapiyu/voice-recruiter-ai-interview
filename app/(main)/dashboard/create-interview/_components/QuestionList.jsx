@@ -4,13 +4,15 @@ import { toast } from "sonner";
 import { Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuestionListContainer from "./QuestionListContainer";
-import { useUser } from "@/provider";
+import { useUser } from "@/app/provider";
 import { supabase } from "services/supabaseClient";
+import { v4 as uuidv4 } from 'uuid';
 
 function QuestionList({ formData }) {
   const [loading, setLoading] = useState(true);
   const [questionList, setQuestionList] = useState([]);
   const { user } = useUser();
+  const [saveLoading,setSaveLoading]=useState(false);
 
   useEffect(() => {
     if (formData) {
@@ -42,12 +44,22 @@ function QuestionList({ formData }) {
   };
 
   const onFinish = async () => {
+    setSaveloading(true);
+    const interview_id = uuidv4();
     const { data, error } = await supabase
       .from("Interviews")
       .insert([
-        { ...formData, questionList: questionList, userEmail: user?.email },
+        {
+          ...formData,
+          questionList: questionList,
+          userEmail: user?.email,
+          interview_id: interview_id,
+        },
       ])
       .select();
+      setSaveLoading(false);
+
+    console.log(data);
 
     if (error) toast.error(`Error saving interview: ${error.message}`);
     else toast.success("Interview saved successfully!");
@@ -71,7 +83,9 @@ function QuestionList({ formData }) {
             <QuestionListContainer questionList={questionList} />
           )}
           <div className="mt-10 flex justify-end">
-            <Button onClick={onFinish}>Finish</Button>
+            <Button onClick={()=>onFinish()} disable={saveLoading}>
+              {saveLoading&&<Loder2 className='animate-spin'/>}
+              Finish</Button>
           </div>
         </>
       )}
