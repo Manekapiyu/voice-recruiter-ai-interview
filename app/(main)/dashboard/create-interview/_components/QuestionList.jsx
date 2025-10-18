@@ -8,7 +8,7 @@ import { useUser } from "@/app/provider";
 import { supabase } from "services/supabaseClient";
 import { v4 as uuidv4 } from 'uuid';
 
-function QuestionList({ formData }) {
+function QuestionList({ formData ,onCreateLink }) {
   const [loading, setLoading] = useState(true);
   const [questionList, setQuestionList] = useState([]);
   const { user } = useUser();
@@ -59,6 +59,10 @@ function QuestionList({ formData }) {
       .select();
       setSaveLoading(false);
 
+      onCreateLink({
+        interview_id:interview_id,
+      })
+
     console.log(data);
 
     if (error) toast.error(`Error saving interview: ${error.message}`);
@@ -85,7 +89,7 @@ function QuestionList({ formData }) {
           <div className="mt-10 flex justify-end">
             <Button onClick={()=>onFinish()} disable={saveLoading}>
               {saveLoading&&<Loder2 className='animate-spin'/>}
-              Finish</Button>
+              Create Interview Link and Finish</Button>
           </div>
         </>
       )}
