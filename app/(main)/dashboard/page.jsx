@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Provider from "@/provider";
+import Provider from "@/app/provider";
  
 import WelcomeContainer from "./_components/WelcomeContainer";
 import CreateOptions from "./_components/CreateOptions";

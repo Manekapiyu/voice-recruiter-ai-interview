@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useUser } from "@/provider";
+import { useUser } from "@/app/provider";
 
 import Image from "next/image";
 
