@@ -2,36 +2,53 @@ import React from 'react'
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { List, TypeOutline } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
-function InterviewLink (interview_id,formData) {
-    const GetInterviewUrl=()=>{
-        const url=process.env.NEXT_PUBLIC_HOST_URL+'/'+ interview_id
-        return url
-
-    }
+function InterviewLink ({ interviewId, formData }) {
+  const GetInterviewUrl = () => {
+    const url = process.env.NEXT_PUBLIC_HOST_URL + '/' + interviewId
+    return url
+  }
   return (
     <div className='flex flex-col items-center justify-center mt-10'>
-        <Image src={'/check.png'} alt='check'
+      <Image src={'/check.png'} alt='check'
         width={100}
         height={100}
-        className='w-[50px h-[90px]'
-        />
-        <h2 className='font-bold text-lg mt-4'> Your AI Interview is Ready Now!</h2><br/>
-        <p className='mt-3'>Share this link with your candidates to start the interview process</p>
+        className='w-[60px] h-[60px]'
+      />
+      <h2 className='font-bold text-lg mt-4'> Your AI Interview is Ready Now!</h2><br/>
+      <p className='mt-3'>Share this link with your candidates to start the interview process</p>
 
-        <div className='w-full p-7 mt-6 rounded-xl bg-gray-100'>
-            <div className='flex justify-between items-center '>
-                <h2>Interview Link</h2>
-                <p className='p-1 px-2  text-primary bg-blue-50'>Valid for 30 Days</p>
-
-                
-            </div>
-            <div className='mt-3 flex gap-3 items-center'>
-                    <Input defaultValue={GetInterviewUrl()} disable={true}/>
-                    <Button>Copy Link</Button>
-                </div>
+      <div className='w-full p-7 mt-6 rounded-xl bg-blue-50/30'>
+        <div className='flex justify-between items-center '>
+          <h2>Interview Link</h2>
+          <p className='p-1 px-2  text-primary bg-blue-50'>Valid for 30 Days</p>
         </div>
-    </div>
+        <div className='mt-3 flex gap-3 items-center'>
+          <Input defaultValue={GetInterviewUrl()} disabled={true}/>
+          <Button>Copy Link</Button>
+        </div>
+        <hr className='my-5'/>
+        <div className='flex gap-5'>
+          <h2 className='text-sm  text-gray-500 flex  gap-2 items-center'><Clock className='h-4 w-4'/>{formData?.duration}</h2>
+          <h2 className='text-sm text-gray-500 flex gap-2 items-center'><List className='h-4 w-4'/> 10 Questions</h2>
+         {/* <h2 className='text-sm text-gray-500 flex gap-2 items-center'><Calender className='h-4 w-4'/>30 Min {formData?.duration}</h2>*/}
+        </div>
+      </div>
+      
+        <div className='mt-7 bg-gray p-5 rounded-lg w-full'>
+  <h2 className="text-lg font-semibold">Share Via</h2>
+  <div className='flex flex-col'>
+  <Button variant="outline" className="w-full mb-2"><Mail />Mail</Button>
+  <Button variant="outline" className="w-full mb-2 "><Mail />Stack</Button>
+  <Button variant="outline" className="w-full"><Mail />Whatsapp</Button>
+</div>
+</div>
+        </div>
+     
+
   )
 }
 
