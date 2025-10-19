@@ -34,7 +34,7 @@ export async function POST(req) {
     });
 
     const completion = await openai.chat.completions.create({
-      model: "openai/gpt-oss-20b:free",
+      model: "google/gemini-2.0-flash-exp:free",
       messages: [{ role: "user", content: FINAL_PROMPT }],
     });
 

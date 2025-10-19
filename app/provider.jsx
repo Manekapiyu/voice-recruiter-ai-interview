@@ -43,6 +43,6 @@ export default function Provider({ children }) {
 
 export const useUser = () => {
   const context = useContext(UserDetailContext);
-  if (!context) return { user: null, setUser: () => {} }; // safe fallback
+  if (!context) return { user: null, setUser: () => {} };
   return context;
 };

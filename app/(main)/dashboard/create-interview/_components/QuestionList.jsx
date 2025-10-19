@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -5,8 +7,8 @@ import { Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuestionListContainer from "./QuestionListContainer";
 import { useUser } from "@/app/provider";
-import { supabase } from "services/supabaseClient";
-import { v4 as uuidv4 } from 'uuid';
+import { supabase } from "@/services/supabaseClient"; // ✅ corrected import path
+import { v4 as uuidv4 } from "uuid";
 
 function QuestionList({ formData ,onCreateLink }) {
   const [loading, setLoading] = useState(true);
@@ -20,10 +22,16 @@ function QuestionList({ formData ,onCreateLink }) {
     }
   }, [formData]);
 
+  // ✅ Generate AI Questions
   const GenerateQuestionList = async () => {
     setLoading(true);
     try {
-      const result = await axios.post("/api/ai-model", { ...formData });
+      const result = await axios.post("/api/ai-model", formData);
+
+      if (!result?.data?.message) {
+        throw new Error("No valid response from AI model.");
+      }
+
       console.log("AI Raw Message:", result.data.message);
 
       const message = result.data.message;
@@ -60,7 +68,7 @@ function QuestionList({ formData ,onCreateLink }) {
       setSaveLoading(false);
 
       onCreateLink({
-        interview_id:interview_id,
+        interview_id,
       })
 
     console.log(data);
