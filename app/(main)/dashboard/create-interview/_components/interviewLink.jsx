@@ -2,9 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { List, TypeOutline } from 'lucide-react';
-import { Clock } from 'lucide-react';
-import { Mail } from 'lucide-react';
+import { List, TypeOutline, Clock, Mail, ArrowLeft, Plus } from 'lucide-react';
 
 function InterviewLink ({ interviewId, formData }) {
   const GetInterviewUrl = () => {
@@ -38,15 +36,22 @@ function InterviewLink ({ interviewId, formData }) {
         </div>
       </div>
       
-        <div className='mt-7 bg-gray p-5 rounded-lg w-full'>
+        <div className='mt-7 bg-gray p-5 rounded-lg w-full bg-blue-50'>
   <h2 className="text-lg font-semibold">Share Via</h2>
-  <div className='flex flex-col'>
-  <Button variant="outline" className="w-full mb-2"><Mail />Mail</Button>
-  <Button variant="outline" className="w-full mb-2 "><Mail />Stack</Button>
-  <Button variant="outline" className="w-full"><Mail />Whatsapp</Button>
+  <div className='flex gap-7 mt-2'>
+  <Button variant="outline" className=""><Mail />Mail</Button>
+  <Button variant="outline" className=""><Mail />Stack</Button>
+  <Button variant="outline" className=""><Mail />Whatsapp</Button>
 </div>
 </div>
-        </div>
+
+        <div className='flex w-full gap-5 justify-between mt-8'>
+            <Link href-
+        <Button variant={'outline'}><ArrowLeft/>Back to Dashboard</Button>
+        <Button><Plus/> Create New INterview</Button>
+        
+ </div>
+  </div>
      
 
   )
