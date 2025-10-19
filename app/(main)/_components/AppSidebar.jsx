@@ -22,7 +22,9 @@ export default function AppSidebar() {
   const path=usePathname();
   console.log (path);
   return (
-    <Sidebar>
+   <Sidebar>
+
+
       <SidebarHeader className="flex flex-col items-center mt-4">
         <div className="flex items-center mb-2 ml-5">
           <Image src="/logo.jpg" alt="logo" width={85} height={85} />
@@ -45,7 +47,7 @@ export default function AppSidebar() {
               <SidebarMenuItem key={index} className="p-1">
                 <SidebarMenuButton
                   asChild
-                  className={`p-5 ${path == option.path && "bg-blue-50"}`}
+                  className={`p-5 ${path == option.path && "bg-blue-500"}`}
                 >
                   <Link href={option.path}>
                     <option.icon
