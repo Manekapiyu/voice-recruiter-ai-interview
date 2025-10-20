@@ -9,6 +9,8 @@ import QuestionList from "./_components/QuestionList";
 import { toast } from "sonner";
 import QuestionListContainer from "./_components/QuestionListContainer";
 import InterviewLink from "./_components/InterviewLink";
+import WelcomeContainer from "../_components/WelcomeContainer";
+import Provider from "@/app/provider";
 
 function CreateInterview() {
   const router = useRouter();
@@ -45,6 +47,9 @@ function CreateInterview() {
   }
 
   return (
+    <Provider>
+      <div className="mt-2 px-10">
+        <WelcomeContainer />
     <div className="mt-10 px-10 ">
       <div className="flex gap-5 items-center">
         <ArrowLeft onClick={() => router.back()} className="cursor-pointer" />
@@ -67,6 +72,8 @@ function CreateInterview() {
         formData={formData}/>
       ) : null}
     </div>
+     </div>
+    </Provider>
   );
 }
 
