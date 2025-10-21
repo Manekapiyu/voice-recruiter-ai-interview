@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function InterviewHeader() {
   return (
-    <div className="flex items-center justify-center space-x-4 py-4 bg-white shadow-sm rounded-xl">
+    <div className="flex  space-x-4 py-4 bg-gray-100 shadow-sm rounded-xl">
       {/* Logo */}
       <Image
         src="/logo.jpg"
