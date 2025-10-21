@@ -1,19 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
-import { Clock, Info, Video } from "lucide-react";
+import { Clock, Info, Loader2Icon, Video } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/services/supabaseClient";
 import { toast } from "sonner";
+import { InterviewDataContext } from "@/context/InterviewDataContext";
 
 function Interview() {
   const { interview_id } = useParams();
   const [interviewData, setInterviewData] = useState(null);
   const [userName, setUserName] = useState("");
   const [loading, setLoading] = useState(false);
+  const { interviewInfo, setInterviewInfo } = useContext(InterviewDataContext);
+  const router = useRouter();
 
   useEffect(() => {
     if (interview_id) {
@@ -45,6 +48,7 @@ function Interview() {
   };
 
   const onJoinInterview = async () => {
+    setLoading(true);
     try {
       const { data, error } = await supabase
         .from("Interviews")
@@ -58,11 +62,14 @@ function Interview() {
       } else {
         console.log("Interview joined:", data);
         toast.success(`Welcome ${userName}! Starting your interview...`);
-        // Optionally: redirect to interview room or next step here
+        setInterviewInfo(data);
+        router.push(`/interview/${interview_id}/start`);
       }
     } catch (e) {
       console.error(e);
       toast.error("Something went wrong while joining.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -142,7 +149,8 @@ function Interview() {
             disabled={loading || !userName}
             onClick={onJoinInterview}
           >
-            <Video className="w-5 h-5" />
+            {loading && <Loader2Icon className="animate-spin w-5 h-5" />}
+            {!loading && <Video className="w-5 h-5" />}
             {loading ? "Loading..." : "Join Interview"}
           </Button>
         </div>
