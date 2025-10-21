@@ -3,7 +3,7 @@ import InterviewHeader from './_components/interviewHeader'
 
 function InterviewLayout({ children }) {
   return (
-    <div className='bg-secondary h-screen'>
+    <div className='bg-secondary min-h-screen'>
       <InterviewHeader/>
       {children}
     </div>
