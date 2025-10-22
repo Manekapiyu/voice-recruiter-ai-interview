@@ -7,7 +7,7 @@ import { Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuestionListContainer from "./QuestionListContainer";
 import { useUser } from "@/app/provider";
-import { supabase } from "@/services/supabaseClient"; // ✅ corrected import path
+import { supabase } from "@/services/supabaseClient"; 
 import { v4 as uuidv4 } from "uuid";
 
 function QuestionList({ formData ,onCreateLink }) {
@@ -22,7 +22,7 @@ function QuestionList({ formData ,onCreateLink }) {
     }
   }, [formData]);
 
-  // ✅ Generate AI Questions
+  //  Generate AI Questions
   const GenerateQuestionList = async () => {
     setLoading(true);
     try {
@@ -36,7 +36,7 @@ function QuestionList({ formData ,onCreateLink }) {
 
       const message = result.data.message;
 
-      // Split message into questions (basic parsing)
+      // Split message into questions
       const formattedQuestions = message
         .split(/\n\d+\.\s+/)
         .filter((q) => q.trim() !== "")
@@ -52,7 +52,7 @@ function QuestionList({ formData ,onCreateLink }) {
   };
 
   const onFinish = async () => {
-    setSaveloading(true);
+    setSaveLoading(true);
     const interview_id = uuidv4();
     const { data, error } = await supabase
       .from("Interviews")

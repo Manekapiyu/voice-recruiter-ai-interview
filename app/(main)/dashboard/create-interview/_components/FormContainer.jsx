@@ -29,7 +29,6 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
     if (!exists) {
       setInterviewType((prev) => [...prev, type.title]);
     } else {
-      // Fixed toggle (unselect)
       const updated = interviewType.filter((item) => item !== type.title);
       setInterviewType(updated);
     }

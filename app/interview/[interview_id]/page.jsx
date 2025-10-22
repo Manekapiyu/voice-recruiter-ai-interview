@@ -80,7 +80,6 @@ function Interview() {
   return (
     <div className="p-10 md:px-20 lg:px-40 xl:px-64 bg-gray-100 min-h-screen">
       <div className="flex flex-col items-center justify-center border rounded-2xl p-6 bg-white shadow-md">
-        {/* Logo and Title */}
         <div className="flex items-center space-x-3">
           <Image
             src="/logo.jpg"
