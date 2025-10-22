@@ -62,7 +62,11 @@ function Interview() {
       } else {
         console.log("Interview joined:", data);
         toast.success(`Welcome ${userName}! Starting your interview...`);
-        setInterviewInfo(data);
+        setInterviewInfo({
+          userName:userName,
+          interviewData:Interview[0]
+
+        });
         router.push(`/interview/${interview_id}/start`);
       }
     } catch (e) {
