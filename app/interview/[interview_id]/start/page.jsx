@@ -6,11 +6,12 @@ import { Timer,Mic,Phone} from 'lucide-react';
 import Image from "next/image";
 import Vapi from '@vapi-ai/web';
 import {AlertConfirmation} from './_components/AlertConfirmation';
+import { toast } from 'sonner';
 
 function StartInterview(){
     const {interviewInfo,setInterviewInfo}=useContext(InterviewDataContext);
    const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY);
-
+const [activeUser,setActiveUser]=useState(false);
 
     useEffect(()=>{
         interviewInfo&&startCall();
@@ -77,6 +78,26 @@ vapi.start(assistantOptions)
     const stopInterview=()=>{
       vapi.stop();
     }
+
+    vapi.on("call-start",()=>{
+        console.log("Call has started.");
+        toast('Call started.. Good luck!')
+    });
+
+    vapi.on("speech-start",()=>{
+        console.log("Assitant speech has started.");
+        setActiveUser(false);
+    });
+    vapi.on("speech-end",()=>{
+        console.log("Assitant speech has ended.");
+        setActiveUser(true);
+    });
+
+    vapi.on("call-end",()=>{
+      console.log("Call has Ended")
+      toast('Interview Ended')
+
+      });
 
   return (
     <div className='p-20 lg:px-48 xl:px-56'>
