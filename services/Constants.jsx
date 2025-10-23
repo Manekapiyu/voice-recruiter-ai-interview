@@ -1,34 +1,46 @@
-import { LayoutDashboard, Calendar, List, WalletCards, Settings } from "lucide-react";
+import {
+  LayoutDashboard,
+  Calendar,
+  List,
+  WalletCards,
+  Settings,
+} from "lucide-react";
 
 export const SideBarOptions = [
   {
-    name: 'Dashboard',
+    name: "Dashboard",
     icon: LayoutDashboard,
-    path: '/dashboard'
+    path: "/dashboard",
   },
   {
-    name: 'Scheduled Interview',
-    icon: Calendar, 
-    path: '/scheduled-interview'
+    name: "Scheduled Interview",
+    icon: Calendar,
+    path: "/scheduled-interview",
   },
   {
-    name: 'All Interview',
+    name: "All Interview",
     icon: List,
-    path: '/all-interview'
+    path: "/all-interview",
   },
   {
-    name: 'Billing',
+    name: "Billing",
     icon: WalletCards,
-    path: '/billing'
+    path: "/billing",
   },
   {
-    name: 'Settings',
+    name: "Settings",
     icon: Settings,
-    path: '/settings' 
+    path: "/settings",
   },
 ];
 
-import { Code2Icon, User2Icon, BriefcaseBusinessIcon, Puzzle, CrownIcon } from "lucide-react";
+import {
+  Code2Icon,
+  User2Icon,
+  BriefcaseBusinessIcon,
+  Puzzle,
+  CrownIcon,
+} from "lucide-react";
 
 export const InterviewType = [
   {
@@ -87,4 +99,48 @@ Guidelines:
 - DO NOT include any text outside the JSON (no comments, no introductions, no explanations).
 
 Goal: Produce a clean, valid JSON list of interview questions suitable for immediate API parsing or UI display.
+`;
+
+export const FEEDBACK_PROMPT = `{{conversation}}
+
+{{conversation}}
+
+Depends on this Interview Conversation between assitant and user, 
+
+Give me feedback for user interview. Give me rating out of 10 for technical Skills, 
+
+Communication, Problem Solving, Experince. Also give me summery in 3 lines 
+
+about the interview and one line to let me know whether is recommanded 
+
+for hire or not with msg. Give me response in JSON format
+
+{
+
+    feedback:{
+
+        rating:{
+
+            techicalSkills:5,
+
+            communication:6,
+
+            problemSolving:4,
+
+            experince:7
+
+        },
+
+        summery:<in 3 Line>,
+
+        Recommendation:'',
+
+        RecommendationMsg:''
+
+
+
+    }
+
+}
+
 `;
