@@ -5,11 +5,12 @@ import React, { useContext, useEffect } from 'react'
 import { Timer,Mic,Phone} from 'lucide-react';
 import Image from "next/image";
 import Vapi from '@vapi-ai/web';
-import {AlertConfirmation} from '@/app/interview/[interview_id]/start/_components/AlertConfirmation'
+import {AlertConfirmation} from './_components/AlertConfirmation';
 
 function StartInterview(){
     const {interviewInfo,setInterviewInfo}=useContext(InterviewDataContext);
-    const vapi = new Vapi('NEXT_PUBLIC_VAPI_PUBLIC_KEY');
+   const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY);
+
 
     useEffect(()=>{
         interviewInfo&&startCall();
@@ -72,6 +73,11 @@ vapi.start(assistantOptions)
 
         console.log(questionList);
     }
+
+    const stopInterview=()=>{
+      vapi.stop();
+    }
+
   return (
     <div className='p-20 lg:px-48 xl:px-56'>
       <h2 className='font-bold text-xl flex justify-between'>AI Interview Session
@@ -100,12 +106,10 @@ vapi.start(assistantOptions)
       </div>
       <div className='flex items-center gap-5 justify-center mt-7'>
         <Mic className='h-12 w-12 p-3 bg-blue-400  text-white rounded-full cursor-pointer'/>
-        <AlertConfirmation>
+        <AlertConfirmation stopInterview={() =>stopInterview() }>
             <Phone className='h-12 w-12 p-3 bg-red-400 text-white rounded-full cursor-pointer'
         />
         </AlertConfirmation>
-        <Phone className='h-12 w-12 p-3 bg-red-400 text-white rounded-full cursor-pointer'
-        />
       </div>
       <h2 className='text-sm text-gray-400 text-center mt-5'>Interview In Progress ....</h2>
     </div>

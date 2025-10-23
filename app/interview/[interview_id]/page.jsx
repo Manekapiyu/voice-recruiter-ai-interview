@@ -13,7 +13,8 @@ import { InterviewDataContext } from "@/context/InterviewDataContext";
 function Interview() {
   const { interview_id } = useParams();
   const [interviewData, setInterviewData] = useState(null);
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState();
+  const [userEmail, setUserEmail] = useState();
   const [loading, setLoading] = useState(false);
   const { interviewInfo, setInterviewInfo } = useContext(InterviewDataContext);
   const router = useRouter();
@@ -64,6 +65,7 @@ function Interview() {
         toast.success(`Welcome ${userName}! Starting your interview...`);
         setInterviewInfo({
           userName:userName,
+          userEmail:userEmail,
           interviewData:Interview[0]
 
         });
@@ -124,6 +126,18 @@ function Interview() {
             placeholder="e.g. Jeni Smith"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
+            className="w-full"
+          />
+        </div>
+
+        <div className="w-full md:w-2/3 mt-6">
+          <h3 className="font-medium text-gray-700 mb-2">
+            Enter your Email
+          </h3>
+          <Input
+            placeholder="e.g. jeni@example.com"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
             className="w-full"
           />
         </div>
