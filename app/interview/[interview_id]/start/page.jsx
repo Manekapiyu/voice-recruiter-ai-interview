@@ -119,8 +119,16 @@ vapi.start(assistantOptions)
         setConversation(message?.conversation);
       })
 
-      const GenerateFeedback=()=>{
+      const GenerateFeedback=async()=>{
+        const result=await axios.post('/api/ai-feedback',{
+          conversation:conversation
+        });
 
+        console.log(result?.data);
+        const Content=result.data.content;
+        const FINAL_CONTENT = Content.replace('```json', '').replace('```','')
+        console.log(FINAL_CONTENT);
+//save to our database
       }
 
   return (
