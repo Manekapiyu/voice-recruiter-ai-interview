@@ -10,7 +10,15 @@ Duration: {{duration}} minutes
 
 export async function POST(req) {
   try {
-    const { jobPosition, jobDescription, duration, type } = await req.json();
+    const body = await req.json();
+    const { jobPosition, jobDescription, duration, type } = body || {};
+
+    if (!jobPosition || !jobDescription || !duration || !type) {
+      return NextResponse.json(
+        { error: "Missing required fields in request body" },
+        { status: 400 }
+      );
+    }
 
     const FINAL_PROMPT = QUESTIONS_PROMPT.replace("{{jobTitle}}", jobPosition)
       .replace("{{jobDescription}}", jobDescription)
@@ -20,7 +28,7 @@ export async function POST(req) {
     console.log("Final Prompt:", FINAL_PROMPT);
 
     if (!process.env.OPENROUTER_API_KEY) {
-      console.error(" Missing API Key");
+      console.error("Missing API Key");
       return NextResponse.json({ error: "API key missing" }, { status: 500 });
     }
 
@@ -34,20 +42,22 @@ export async function POST(req) {
     });
 
     const completion = await openai.chat.completions.create({
-      model: "google/gemini-2.0-flash-exp:free",
+      model: "openai/gpt-oss-20b:free",
       messages: [{ role: "user", content: FINAL_PROMPT }],
     });
 
-    const message = completion.choices?.[0]?.message?.content || "No response";
+    const message = completion?.choices?.[0]?.message?.content?.trim() || "No response";
 
     console.log("AI Response:", message);
 
     return NextResponse.json({ message }, { status: 200 });
   } catch (e) {
-    console.error("Error:", e.status || e.response?.status, e.message);
-
+    console.error("Error in /api/ai-model:", e);
     return NextResponse.json(
-      { error: "Failed to generate interview questions" },
+      {
+        error: "Failed to generate interview questions",
+        details: e.message || "Unknown error",
+      },
       { status: 500 }
     );
   }
