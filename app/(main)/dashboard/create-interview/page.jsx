@@ -55,11 +55,12 @@ function CreateInterview() {
         <ArrowLeft onClick={() => router.back()} className="cursor-pointer" />
         <h2 className="font-bold text-2xl">Create New Interview</h2>
       </div>
-      <progress
-        value={step * 33.33}
-        max={100}
-        className="my-5 ml-10  w-4xl h-3 rounded-lg overflow-hidden"
-      />
+     <progress
+  value={step * 33.33}
+  max={100}
+  className="my-5  w-full h-3 rounded-lg overflow-hidden [&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-blue-800"
+></progress>
+
       {step === 1 ? (
         <FormContainer
           onHandleInputChange={onHandleInputChange}

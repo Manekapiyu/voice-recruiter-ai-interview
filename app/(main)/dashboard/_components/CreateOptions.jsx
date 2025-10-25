@@ -5,17 +5,17 @@ import Link from "next/link";
 const CreateOptions = () => {
   const options = [
     {
-      icon: <Video className="h-10 w-10 text-blue-600" />,
+      icon: <Video className="h-10 w-10 text-blue-800" />,
       title: "Create New Interview",
       desc: "Quickly create and schedule your next AI interview session.",
-      bg: "from-blue-50 to-white",
+      bg: "from-blue-200 to-white",
       href: "/dashboard/create-interview",
     },
     {
       icon: <Phone className="h-10 w-10 text-green-600" />,
       title: "Create Phone Screening Call",
       desc: "Quickly create and schedule your next Phone Screening Call session.",
-      bg: "from-green-50 to-white",
+      bg: "from-green-200 to-white",
       href: "/dashboard/create-phone-call",
     },
   ];
