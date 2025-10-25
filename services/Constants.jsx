@@ -81,7 +81,7 @@ Interview Duration: {{duration}}
 
 Interview Type: {{type}}
 
- Format your response **strictly** as valid JSON:
+Format your response strictly as valid JSON:
 {
   "interviewQuestions": [
     {
@@ -90,16 +90,8 @@ Interview Type: {{type}}
     }
   ]
 }
-
-Guidelines:
-- Analyze the job description and tailor questions to the {{type}} interview.
-- Adjust the number and complexity of questions to fit the {{duration}}.
-- Each question should be clear, direct, and relevant to the {{jobTitle}} role.
-- Avoid repetition or generic filler questions.
-- DO NOT include any text outside the JSON (no comments, no introductions, no explanations).
-
-Goal: Produce a clean, valid JSON list of interview questions suitable for immediate API parsing or UI display.
 `;
+
 
 export const FEEDBACK_PROMPT = `{{conversation}}
 
