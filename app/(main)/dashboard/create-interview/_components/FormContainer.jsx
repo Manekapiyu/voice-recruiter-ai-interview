@@ -29,13 +29,14 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
     if (!exists) {
       setInterviewType((prev) => [...prev, type.title]);
     } else {
+      // Fixed toggle (unselect)
       const updated = interviewType.filter((item) => item !== type.title);
       setInterviewType(updated);
     }
   };
 
   return (
-    <div className="p-6 m-5 bg-blue-50/40 rounded-lg shadow-sm">
+    <div className="p-6 m-5  bg-blue-50/40 rounded-lg shadow-sm">
       {/* Job Position */}
       <div>
         <h2 className="text-base font-medium text-gray-900">Job Position</h2>

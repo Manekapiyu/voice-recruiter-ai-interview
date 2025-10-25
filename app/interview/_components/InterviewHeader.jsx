@@ -1,25 +1,27 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
 function InterviewHeader() {
   return (
-    <div className="flex  space-x-4 py-4 bg-gray-100 shadow-sm rounded-xl">
+    <div className="flex items-center gap-3 py-4 px-6 bg-blue-800 shadow-sm ">
       {/* Logo */}
-      <Image
-        src="/logo.jpg"
-        alt="InterVox Logo"
-        width={80}
-        height={80}
-        className="rounded-lg object-cover"
-      />
+      <div className="w-16 h-16 overflow-hidden">
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={90}
+          height={90}
+          className="object-cover w-full h-full"
+        />
+      </div>
 
       {/* Title */}
-      <h1 className="text-4xl font-extrabold tracking-wide leading-tight ">
-        <span className="text-indigo-900">Inter</span>
+      <h1 className="text-4xl font-bold tracking-wide">
+        <span className="text-indigo-300">Inter</span>
         <span className="text-blue-400">Vox</span>
       </h1>
     </div>
-  )
+  );
 }
 
-export default InterviewHeader
+export default InterviewHeader;

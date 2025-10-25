@@ -27,22 +27,22 @@ function InterviewLink({ interview_id, formData }) {
       <Image
         src={"/check.png"}
         alt="check"
-        width={100}
-        height={100}
+        width={150}
+        height={150}
         className="w-[60px] h-[60px]"
       />
-      <h2 className="font-bold text-lg mt-4">
+      <h2 className="font-bold text-xl mt-4">
         {" "}
         Your AI Interview is Ready Now!
       </h2>
       <br />
-      <p className="mt-3">
+      <p className="mt-3 text-sm">
         Share this link with your candidates to start the interview process
       </p>
 
-      <div className="w-full p-7 mt-6 rounded-xl bg-blue-50/30">
+      <div className="w-full p-7 mt-6 rounded-xl bg-white">
         <div className="flex justify-between items-center ">
-          <h2>Interview Link</h2>
+          <h2 className=" text-lg text-blue-900">Interview Link</h2>
           <p className="p-1 px-2  text-primary bg-blue-50">Valid for 30 Days</p>
         </div>
         <div className="mt-3 flex gap-3 items-center">
@@ -63,9 +63,9 @@ function InterviewLink({ interview_id, formData }) {
         </div>
       </div>
 
-      <div className="mt-7 bg-gray p-5 rounded-lg w-full bg-blue-50">
+      <div className="mt-7 bg-gray p-5 rounded-lg w-full bg-blue-50 border border-blue-200">
         <h2 className="text-lg font-semibold">Share Via</h2>
-        <div className="flex gap-7 mt-2">
+        <div className="flex gap-7 mt-2 border border-blue-500 p-5 rounded-lg">
           <Button variant="outline" className="">
             <Mail />
             Mail
