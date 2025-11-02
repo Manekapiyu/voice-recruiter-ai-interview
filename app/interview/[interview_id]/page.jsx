@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/services/supabaseClient";
 import { toast } from "sonner";
 import { InterviewDataContext } from "@/context/InterviewDataContext";
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useParams } from "next/navigation";
 
 function Interview() {
   const { interview_id } = useParams();
@@ -25,28 +25,32 @@ function Interview() {
     }
   }, [interview_id]);
 
-  const GetInterviewDetails = async () => {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from("Interviews")
-        .select("jobPosition, jobDescription, duration, type")
-        .eq("interview_id", interview_id)
-        .single();
+ const GetInterviewDetails = async () => {
+  setLoading(true);
+  try {
+    const { data, error } = await supabase
+      .from("Interviews")
+      .select("jobPosition, jobDescription, duration, type")
+      .eq("interview_id", interview_id)
+      .maybeSingle(); // ✅ safer than .single()
 
-      if (error) {
-        console.error("Error fetching interview details:", error);
-        toast.error("Failed to load interview details.");
-      } else {
-        setInterviewData(data);
-      }
-    } catch (e) {
-      console.error(e);
-      toast.error("Incorrect Interview Link");
-    } finally {
-      setLoading(false);
+    if (error) {
+      console.error("Supabase error fetching interview details:", error);
+      toast.error("Failed to load interview details.");
+    } else if (!data) {
+      console.warn("No interview found for ID:", interview_id);
+      toast.error("Invalid interview link or data not found.");
+    } else {
+      setInterviewData(data);
     }
-  };
+  } catch (e) {
+    console.error("Unexpected error:", e);
+    toast.error("Something went wrong while loading interview.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const onJoinInterview = async () => {
     setLoading(true);
