@@ -32,7 +32,7 @@ function Interview() {
       .from("Interviews")
       .select("jobPosition, jobDescription, duration, type")
       .eq("interview_id", interview_id)
-      .maybeSingle(); // ✅ safer than .single()
+      .maybeSingle();
 
     if (error) {
       console.error("Supabase error fetching interview details:", error);
@@ -83,11 +83,11 @@ function Interview() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl bg-white/80 backdrop-blur-md border border-blue-200 rounded-3xl shadow-xl p-8 transition-all hover:shadow-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-500 flex items-center justify-center p-6">
+      <div className="w-full max-w-2xl bg-white/80 backdrop-blur-md border border-blue-500 rounded-3xl shadow-2xl p-8 transition-all hover:shadow-3xl">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-6">
-          <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-md mb-2">
+          <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md mb-2">
             <Image
               src="/logo.png"
               alt="logo"
@@ -96,7 +96,7 @@ function Interview() {
               className="object-cover"
             />
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-blue-900">
+          <h1 className="text-3xl font-extrabold tracking-tight text-blue-900">
             <span className="text-blue-800">Inter</span>
             <span className="text-blue-400">Vox</span>
           </h1>
