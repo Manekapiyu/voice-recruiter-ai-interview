@@ -10,7 +10,7 @@ function InterviewLayout({ children }) {
   return (
     <InterviewDataContext.Provider value={{ interviewInfo, setInterviewInfo }}>
       <div className="bg-secondary min-h-screen">
-        <InterviewHeader />
+    
         {children}
       </div>
     </InterviewDataContext.Provider>

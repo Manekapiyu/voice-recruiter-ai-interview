@@ -10,6 +10,7 @@ import { InterviewDataContext } from "@/context/InterviewDataContext";
 import Vapi from '@vapi-ai/web';
 import TimerComponent from './_components/TimeComponent';
 import axios from 'axios';
+import InterviewHeader from "../../_components/InterviewHeader";
 
 function StartInterview() {
   const { interviewInfo } = useContext(InterviewDataContext);
@@ -143,8 +144,11 @@ Be friendly, concise, and engaging. Provide hints if needed and wrap up after 5-
   };
 
   return (
-    <div className='p-20 lg:px-48 xl:px-56'>
-      <h2 className='font-bold text-xl flex justify-between'>
+         <>
+      <InterviewHeader />
+
+    <div className='p-8 lg:px-48 xl:px-56  bg-[#02274f]'>
+      <h2 className='font-bold text-xl flex justify-between text-white'>
         AI Interview Session
         <span className='flex gap-2 items-center'>
           <TimerComponent isRunning={isRunning} />
@@ -152,19 +156,19 @@ Be friendly, concise, and engaging. Provide hints if needed and wrap up after 5-
       </h2>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-7 mt-5'>
-        <div className='bg-white h-[400px] p-20 rounded-lg border flex flex-col gap-3 items-center justify-center relative'>
+        <div className='bg-[#b3d5ff] h-[300px] p-20 rounded-lg border flex flex-col gap-3 items-center justify-center relative'>
           {activeUser === "ai" && (
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] rounded-full border-4 border-blue-500 opacity-50 animate-ping z-0"></span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] rounded-full border-8 border-blue-900 opacity-50 animate-ping z-0"></span>
           )}
           <Image src='/ai-avatar.png' alt='ai' width={100} height={100} className='w-[90px] h-[90px] rounded-full object-cover border-2 border-blue-300 shadow-md p-4 bg-blue-100' />
           <h2>AI Voice Agent</h2>
         </div>
 
-        <div className='bg-white h-[400px] p-20 rounded-lg border flex flex-col gap-3 items-center justify-center relative'>
+        <div className='bg-[#b3d5ff] h-[300px] p-20 rounded-lg border flex flex-col gap-3 items-center justify-center relative'>
           {activeUser === "user" && (
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] rounded-full border-4 border-blue-500 opacity-50 animate-ping z-0"></span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] rounded-full border-8 border-blue-900 opacity-50 animate-ping z-0"></span>
           )}
-          <Image src='/useravatar.jpg' alt='user' width={100} height={100} className='w-[90px] h-[90px] rounded-full object-cover border-2 border-blue-300 shadow-md bg-blue-100' />
+          <Image src='/useravatar.webp' alt='user' width={100} height={100} className='w-[90px] h-[90px] rounded-full object-cover border-2 border-blue-300 shadow-md bg-blue-100' />
           <h2>{interviewInfo?.userName}</h2>
         </div>
       </div>
@@ -172,14 +176,15 @@ Be friendly, concise, and engaging. Provide hints if needed and wrap up after 5-
       <div className='flex items-center gap-5 justify-center mt-7'>
         <Mic className='h-12 w-12 p-3 bg-blue-400 text-white rounded-full cursor-pointer' />
         {!loading ? (
-          <Phone className='h-12 w-12 p-3 bg-red-400 text-white rounded-full cursor-pointer' onClick={stopInterview} />
+          <Phone className='h-12 w-12 p-3 bg-red-400 text-white rounded-full cursor-pointer' onClick={stopInterview} />   
         ) : (
           <Loader2Icon className="animate-spin" />
         )}
       </div>
 
-      <h2 className='text-sm text-gray-400 text-center mt-5'>Interview In Progress ....</h2>
+      <h2 className='text-sm text-gray-300 text-center mt-5'>Interview In Progress ....</h2>
     </div>
+    </>
   );
 }
 
