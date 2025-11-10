@@ -12,7 +12,7 @@ import InterviewCard from "../dashboard/_components/InterviewCard";
 
 function ScheduledInterview() {
   const { user } = useUser();
-  const [interviewList, setInterviewList] = useState([]); // ✅ ADD THIS
+  const [interviewList, setInterviewList] = useState([]); 
 
   useEffect(() => {
     if (user) {
@@ -23,12 +23,13 @@ function ScheduledInterview() {
   const GetInterviewList = async () => {
     const result = await supabase
       .from("Interviews")
-      .select("jobPosition, duration, interview_id, interview-feedback(userEmail)")
+      .select(`jobPosition, jobDescription,type,questionList, duration, interview_id,created_at, 
+        interview-feedback(userEmail,userName,feedback,created_at)`)
       .eq("userEmail", user?.email)
       .order("id", { ascending: false });
 
     console.log(result);
-    setInterviewList(result.data || []); // ✅ Handle null safely
+    setInterviewList(result.data || []); 
   };
 
   return (
