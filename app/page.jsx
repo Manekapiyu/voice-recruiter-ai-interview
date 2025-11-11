@@ -100,7 +100,7 @@ function HeroSection() {
   <motion.img
     src="Interview.avif"
     alt="AI Interview Illustration"
-    className="rounded-2xl border-blue-50  shadow-[#022a79] hover:shadow-[0_0_45px_oklch(0.21_0.034_264.665)/0.8] transition-shadow duration-500"
+    className="rounded-2xl border-blue-50  shadow-[#02308c] hover:shadow-[0_0_45px_oklch(0.21_0.034_264.665)/0.8] transition-shadow duration-500"
     animate={{
       y: [0, -10, 0],
     }}

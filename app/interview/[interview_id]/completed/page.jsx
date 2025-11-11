@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, Home } from "lucide-react";
 import { supabase } from "@/services/supabaseClient";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function InterviewComplete({ interviewId }) {
   const [feedback, setFeedback] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFeedback = async () => {
@@ -67,15 +69,20 @@ export default function InterviewComplete({ interviewId }) {
     experience = 0,
   } = rating;
 
-  const average = (
-    (technicalSkills + communication + problemSolving + experience) / 4
-  ).toFixed(1);
+  // ✅ Fix: calculate average only from non-zero ratings
+  const ratingValues = [technicalSkills, communication, problemSolving, experience].filter(
+    (v) => v > 0
+  );
+  const average =
+    ratingValues.length > 0
+      ? (ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length).toFixed(1)
+      : "N/A";
 
   return (
-    <div className="max-w-6xl mx-auto bg-gradient-to-br from-blue-50 to-blue-400 shadow-xl rounded-3xl p-4 border border-gray-100 mt-2 ">
+    <div className="max-w-6xl mx-auto bg-gradient-to-br from-blue-50 to-blue-400 shadow-xl rounded-3xl p-4 border border-gray-100 mt-2">
       {/* Header */}
-      <div className="flex flex-col items-center text-center mb-2 ">
-        <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md  bg-gray-50 ">
+      <div className="flex flex-col items-center text-center mb-2">
+        <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md bg-gray-50">
           <Image
             src="/logo.png"
             alt="logo"
@@ -91,7 +98,7 @@ export default function InterviewComplete({ interviewId }) {
         <p className="text-gray-500 mt-1">AI-Powered Interview Platform</p>
       </div>
 
-      <div className="flex items-center justify-between ">
+      <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">{username}</h1>
         </div>
@@ -180,6 +187,17 @@ export default function InterviewComplete({ interviewId }) {
             Proceed to Offer
           </button>
         )}
+      </div>
+
+      {/* ✅ Go to Dashboard Button */}
+      <div className="flex justify-center mt-6">
+        <button
+          onClick={() => router.push("/dashboard")}
+          className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-full shadow-md transition"
+        >
+          <Home className="w-5 h-5" />
+          Go to Dashboard
+        </button>
       </div>
     </div>
   );
