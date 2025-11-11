@@ -38,7 +38,7 @@ function QuestionList({ formData, onCreateLink }) {
 
       console.log("AI Raw Message:", result.data.message);
 
-      // Format questions from AI response
+      // Minimal fix: ensure questions have titles
       const formattedQuestions = result.data.message
         .split(/\n\d+\.\s+/)
         .filter((q) => q.trim() !== "")
@@ -88,6 +88,13 @@ function QuestionList({ formData, onCreateLink }) {
       console.error("Error saving interview:", err);
       toast.error(`Error saving interview: ${err.message}`);
     } finally {
+      const userUpdate = await supabase
+        .from("Users")
+        .update({ credits: Number(user?.credit) - 1 }) // fix typo if needed
+        .eq("email", user?.email)
+        .select();
+
+      console.log(userUpdate);
       setSaveLoading(false);
     }
   };

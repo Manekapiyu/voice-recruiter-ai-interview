@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-50 min-h-screen">
+    <div className="flex flex-col items-center bg-gradient-to-br from-blue-100 to-blue-800 min-h-screen">
       {/* Login Card */}
       <div className="mt-16 flex flex-col items-center border rounded-2xl shadow-lg p-8 bg-white w-full max-w-md">
         {/* Logo + Brand Name */}
@@ -55,7 +55,7 @@ const Login = () => {
             Sign in with Google Authentication
           </p>
           <Button
-            className="mt-4 w-full bg-blue-700 hover:bg-indigo-500 text-white"
+            className="mt-4 w-full bg-blue-800 hover:bg-[#012265] text-white"
             onClick={signInWithGoogle}
           >
             Login with Google

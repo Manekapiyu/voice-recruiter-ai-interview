@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -13,7 +14,7 @@ function QuestionListContainer({ questionList }) {
             key={index}
             className="relative border-l-4 border-blue-500 bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition-all duration-300"
           >
-            {/* Small timestamp top right */}
+            {/* Timestamp */}
             <span className="absolute top-3 right-4 text-xs text-gray-400">
               {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </span>

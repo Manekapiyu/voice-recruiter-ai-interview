@@ -29,7 +29,7 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
     if (!exists) {
       setInterviewType((prev) => [...prev, type.title]);
     } else {
-      // Fixed toggle (unselect)
+
       const updated = interviewType.filter((item) => item !== type.title);
       setInterviewType(updated);
     }
@@ -93,7 +93,7 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
                 interviewType.includes(type.title) &&
                 "bg-blue-50 text-primary border-blue-400"
               }`}
-              onClick={() => AddInterviewType(type)} // ✅ uses toggle handler
+              onClick={() => AddInterviewType(type)} 
             >
               <type.icon className="w-5 h-5 text-blue-600" />
               <span className="text-sm font-medium text-gray-900">
