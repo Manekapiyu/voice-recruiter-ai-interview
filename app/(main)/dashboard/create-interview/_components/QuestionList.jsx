@@ -22,7 +22,6 @@ function QuestionList({ formData, onCreateLink }) {
     }
   }, [formData]);
 
-  //  Generate AI Questions
   const GenerateQuestionList = async () => {
     setLoading(true);
     try {
@@ -38,7 +37,6 @@ function QuestionList({ formData, onCreateLink }) {
 
       console.log("AI Raw Message:", result.data.message);
 
-      // Minimal fix: ensure questions have titles
       const formattedQuestions = result.data.message
         .split(/\n\d+\.\s+/)
         .filter((q) => q.trim() !== "")
@@ -56,7 +54,6 @@ function QuestionList({ formData, onCreateLink }) {
     }
   };
 
-  //  Save Interview to Supabase
   const onFinish = async () => {
     if (!questionList.length) {
       toast.error("No questions to save!");
@@ -90,7 +87,7 @@ function QuestionList({ formData, onCreateLink }) {
     } finally {
       const userUpdate = await supabase
         .from("Users")
-        .update({ credits: Number(user?.credit) - 1 }) // fix typo if needed
+        .update({ credits: Number(user?.credit) - 1 })
         .eq("email", user?.email)
         .select();
 
@@ -107,7 +104,8 @@ function QuestionList({ formData, onCreateLink }) {
           <div>
             <h2 className="text-medium">Generating Interview Questions</h2>
             <p className="text-primary">
-              Our AI is crafting personalized questions based on your job position
+              Our AI is crafting personalized questions based on your job
+              position
             </p>
           </div>
         </div>

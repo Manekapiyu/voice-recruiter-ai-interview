@@ -19,10 +19,10 @@ import { usePathname } from "next/navigation";
 
 export default function AppSidebar() {
 
-  const path=usePathname();
-  console.log (path);
+  const path = usePathname();
+  console.log(path);
   return (
-   <Sidebar>
+    <Sidebar>
 
 
       <SidebarHeader className="flex flex-col items-center mt-4">
@@ -34,45 +34,42 @@ export default function AppSidebar() {
           </h1>
         </div>
         <Link href="/dashboard/create-interview" className="w-[90%] mt-5">
-      <Button className="w-full">
-        <Plus className="mr-1" /> Create New Interview
-      </Button>
-    </Link>
+          <Button className="w-full">
+            <Plus className="mr-1" /> Create New Interview
+          </Button>
+        </Link>
       </SidebarHeader>
 
       <SidebarContent>
-  <SidebarGroup>
-    <SidebarMenu>
-      {SideBarOptions.map((option, index) => (
-        <SidebarMenuItem key={index} className="p-1">
-          <SidebarMenuButton
-            asChild
-            className={`p-5 ${
-              path === option.path ? "bg-gray-100" : ""
-            }`}
-          >
-            <Link href={option.path} className="flex items-center gap-2">
-              <option.icon
-                className={`text-[20px] ${
-                  path === option.path ? "text-blue-600" : "text-gray-400 "
-                }`}
-              />
-              <span
-                className={`font-medium text-[16px] ${
-                  path === option.path ? "text-blue-600" : "text-gray-300 hover:text-blue-600"
-                }`}
-              >
-                {option.name}
-              </span>
-            </Link>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      ))}
-    </SidebarMenu>
-  </SidebarGroup>
-</SidebarContent>
+        <SidebarGroup>
+          <SidebarMenu>
+            {SideBarOptions.map((option, index) => (
+              <SidebarMenuItem key={index} className="p-1">
+                <SidebarMenuButton
+                  asChild
+                  className={`p-5 ${path === option.path ? "bg-gray-100" : ""
+                    }`}
+                >
+                  <Link href={option.path} className="flex items-center gap-2">
+                    <option.icon
+                      className={`text-[20px] ${path === option.path ? "text-blue-600" : "text-gray-400 "
+                        }`}
+                    />
+                    <span
+                      className={`font-medium text-[16px] ${path === option.path ? "text-blue-600" : "text-gray-300 hover:text-blue-600"
+                        }`}
+                    >
+                      {option.name}
+                    </span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarContent>
 
-<SidebarFooter />
+      <SidebarFooter />
 
     </Sidebar>
   );
