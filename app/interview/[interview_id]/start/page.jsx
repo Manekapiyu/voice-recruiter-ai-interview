@@ -60,7 +60,6 @@ function StartInterview() {
   };
 
   const startCall = () => {
-    // Safely build question list
     const questionList = interviewInfo?.interviewData?.questionList
       ?.map(q => q?.question)
       .filter(Boolean)
@@ -90,16 +89,14 @@ Be friendly, concise, and engaging. Provide hints if needed and wrap up after 5-
 
     vapi.start(assistantOptions);
 
-    // Attach listeners
     vapi.on("message", handleMessage);
     vapi.on("call-start", handleCallStart);
     vapi.on("call-end", handleCallEnd);
     vapi.on("speech-start", handleSpeechStart);
     vapi.on("speech-end", handleSpeechEnd);
-    vapi.on("error", handleVapiError); // ✅ fixed error listener
+    vapi.on("error", handleVapiError); 
   };
 
-  // Cleanup listeners on unmount
   useEffect(() => {
     if (interviewInfo) startCall();
 
@@ -109,7 +106,7 @@ Be friendly, concise, and engaging. Provide hints if needed and wrap up after 5-
       vapi.off("call-end", handleCallEnd);
       vapi.off("speech-start", handleSpeechStart);
       vapi.off("speech-end", handleSpeechEnd);
-      vapi.off("error", handleVapiError); // ✅ properly remove listener
+      vapi.off("error", handleVapiError); 
     };
   }, [interviewInfo]);
 

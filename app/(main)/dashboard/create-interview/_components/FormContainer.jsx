@@ -29,7 +29,7 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
     if (!exists) {
       setInterviewType((prev) => [...prev, type.title]);
     } else {
-      // Fixed toggle (unselect)
+
       const updated = interviewType.filter((item) => item !== type.title);
       setInterviewType(updated);
     }
@@ -37,7 +37,7 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
 
   return (
     <div className="p-6 m-5  bg-blue-50/40 rounded-lg shadow-sm">
-      {/* Job Position */}
+
       <div>
         <h2 className="text-base font-medium text-gray-900">Job Position</h2>
         <Input
@@ -49,7 +49,6 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
         />
       </div>
 
-      {/* Job Description */}
       <div className="mt-5">
         <h2 className="text-base font-medium text-gray-900">Job Description</h2>
         <Textarea
@@ -61,7 +60,6 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
         />
       </div>
 
-      {/* Interview Duration */}
       <div className="mt-5">
         <h2 className="text-base font-medium text-gray-900">
           Interview Duration
@@ -93,7 +91,7 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
                 interviewType.includes(type.title) &&
                 "bg-blue-50 text-primary border-blue-400"
               }`}
-              onClick={() => AddInterviewType(type)} // ✅ uses toggle handler
+              onClick={() => AddInterviewType(type)} 
             >
               <type.icon className="w-5 h-5 text-blue-600" />
               <span className="text-sm font-medium text-gray-900">

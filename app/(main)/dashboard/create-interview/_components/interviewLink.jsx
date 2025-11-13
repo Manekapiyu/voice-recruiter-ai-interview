@@ -2,25 +2,29 @@ import React from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { List, TypeOutline, Clock, Mail, ArrowLeft, Plus ,Copy} from "lucide-react";
+import {
+  List,
+  TypeOutline,
+  Clock,
+  Mail,
+  ArrowLeft,
+  Plus,
+  Copy,
+} from "lucide-react";
 import Dashboard from "../../page";
 import Link from "next/link";
 import { toast } from "sonner";
 
-
 function InterviewLink({ interview_id, formData }) {
-     const url = process.env.NEXT_PUBLIC_HOST_URL + "/" + interview_id;
+  const url = process.env.NEXT_PUBLIC_HOST_URL + "/" + interview_id;
   const GetInterviewUrl = () => {
     return url;
-  }
+  };
 
-  const onCopyLink=async()=>{
+  const onCopyLink = async () => {
     await navigator.clipboard.writeText(url);
-    toast('Link Copied')
-    
-
-
-  }
+    toast("Link Copied");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center mt-10">
@@ -47,7 +51,9 @@ function InterviewLink({ interview_id, formData }) {
         </div>
         <div className="mt-3 flex gap-3 items-center">
           <Input defaultValue={GetInterviewUrl()} disabled={true} />
-          <Button onClick={()=>onCopyLink()}><Copy/> Copy Link</Button>
+          <Button onClick={() => onCopyLink()}>
+            <Copy /> Copy Link
+          </Button>
         </div>
 
         <hr className="my-5" />
@@ -59,7 +65,6 @@ function InterviewLink({ interview_id, formData }) {
           <h2 className="text-sm text-gray-500 flex gap-2 items-center">
             <List className="h-4 w-4" /> 10 Questions
           </h2>
-          {/* <h2 className='text-sm text-gray-500 flex gap-2 items-center'><Calender className='h-4 w-4'/>30 Min {formData?.duration}</h2>*/}
         </div>
       </div>
 

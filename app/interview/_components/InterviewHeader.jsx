@@ -5,7 +5,7 @@ function InterviewHeader() {
   return (
     <div className="flex items-center gap-3 py-4 px-6 bg-[#02274f]
  shadow-sm ">
-      {/* Logo */}
+
       <div className="w-16 h-16 overflow-hidden">
         <Image
           src="/logo.png"
@@ -16,7 +16,6 @@ function InterviewHeader() {
         />
       </div>
 
-      {/* Title */}
       <h1 className="text-3xl font-semibold tracking-wide">
          <span className="text-indigo-300">Inter</span>
             <span className="text-blue-400">Vox</span>

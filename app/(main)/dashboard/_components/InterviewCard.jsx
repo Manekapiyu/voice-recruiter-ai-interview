@@ -69,9 +69,9 @@ function InterviewCard({ interview, viewDetail = false }) {
           </Button>
         ) : (
           
-          <Link href={`/schedule-interview/${interview?.interview_id}/details`}>
+          <Link href={`/scheduled-interview/${interview?.interview_id}/details`}>
             <Button
-              className="w-full flex items-center justify-center gap-2 text-blue-700 border-blue-300 hover:bg-blue-50"
+              className="w-full flex items-center justify-center gap-2 bg-blue-200 text-blue-700 border-blue-400 hover:bg-blue-900 hover:text-white"
               variant="outline"
             >
               View Details

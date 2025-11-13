@@ -85,7 +85,7 @@ function Interview() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-500 flex items-center justify-center p-6">
       <div className="w-full max-w-2xl bg-white/80 backdrop-blur-md border border-blue-500 rounded-3xl shadow-2xl p-8 transition-all hover:shadow-3xl">
-        {/* Header */}
+
         <div className="flex flex-col items-center text-center mb-6">
           <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md mb-2">
             <Image
@@ -103,7 +103,6 @@ function Interview() {
           <p className="text-gray-600 mt-1">AI-Powered Interview Platform</p>
         </div>
 
-        {/* Illustration */}
         <div className="flex justify-center">
           <Image
             src="/Interview.png"
@@ -114,7 +113,6 @@ function Interview() {
           />
         </div>
 
-        {/* Job Info */}
         <div className="text-center mt-4">
           <h2 className="text-2xl font-semibold text-blue-900">
             {interviewData?.jobPosition || "Loading Interview..."}
@@ -127,7 +125,6 @@ function Interview() {
           </p>
         </div>
 
-        {/* Form Inputs */}
         <div className="mt-8 space-y-6">
           <div>
             <label className="block text-gray-700 font-medium mb-1">
@@ -154,7 +151,6 @@ function Interview() {
           </div>
         </div>
 
-        {/* Info Box */}
         <div className="flex items-start gap-4 p-5 bg-blue-50 border border-blue-200 rounded-2xl mt-8 shadow-sm">
           <div className="bg-blue-100 p-3 rounded-full">
             <Info className="text-blue-600 w-6 h-6" />
@@ -171,7 +167,6 @@ function Interview() {
           </div>
         </div>
 
-        {/* Join Button */}
         <div className="w-full">
           <Button
               className="mt-8 w-full py-3 text-lg font-semibold bg-blue-800 hover:bg-blue-500  text-white justify-center rounded-xl flex items-center gap-2" 
