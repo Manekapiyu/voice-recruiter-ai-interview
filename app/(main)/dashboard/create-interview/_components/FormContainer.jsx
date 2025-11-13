@@ -37,7 +37,7 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
 
   return (
     <div className="p-6 m-5  bg-blue-50/40 rounded-lg shadow-sm">
-      {/* Job Position */}
+
       <div>
         <h2 className="text-base font-medium text-gray-900">Job Position</h2>
         <Input
@@ -49,7 +49,6 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
         />
       </div>
 
-      {/* Job Description */}
       <div className="mt-5">
         <h2 className="text-base font-medium text-gray-900">Job Description</h2>
         <Textarea
@@ -61,7 +60,6 @@ function FormContainer({ onHandleInputChange ,GoToNext }) {
         />
       </div>
 
-      {/* Interview Duration */}
       <div className="mt-5">
         <h2 className="text-base font-medium text-gray-900">
           Interview Duration

@@ -69,7 +69,6 @@ export default function InterviewComplete({ interviewId }) {
     experience = 0,
   } = rating;
 
-  // ✅ Fix: calculate average only from non-zero ratings
   const ratingValues = [technicalSkills, communication, problemSolving, experience].filter(
     (v) => v > 0
   );
@@ -107,7 +106,6 @@ export default function InterviewComplete({ interviewId }) {
         </div>
       </div>
 
-      {/* Skills Evaluation */}
       <div className="mb-8">
         <h2 className="font-semibold text-blue-950 text-lg mb-4">Skills Evaluation</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
@@ -140,7 +138,6 @@ export default function InterviewComplete({ interviewId }) {
         </div>
       </div>
 
-      {/* Summary */}
       <div className="mb-8">
         <h2 className="font-semibold text-blue-950 text-lg mb-1">Performance Summary</h2>
         <p className="text-gray-600 text-sm leading-relaxed bg-gray-50 rounded-xl p-4 border border-gray-300">
@@ -148,7 +145,6 @@ export default function InterviewComplete({ interviewId }) {
         </p>
       </div>
 
-      {/* Recommendation */}
       <div
         className={`p-4 rounded-xl flex items-center justify-between ${
           recommendation.toLowerCase() === "yes"
@@ -189,7 +185,6 @@ export default function InterviewComplete({ interviewId }) {
         )}
       </div>
 
-      {/* ✅ Go to Dashboard Button */}
       <div className="flex justify-center mt-6">
         <button
           onClick={() => router.push("/dashboard")}
