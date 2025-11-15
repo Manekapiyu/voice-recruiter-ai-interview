@@ -70,11 +70,11 @@ export default function InterviewComplete({ interviewId }) {
 
   return (
     <div className=" mt-5 max-w-5xl mx-auto p-6 bg-gradient-to-br from-blue-50 to-blue-200 rounded-3xl shadow-2xl relative overflow-hidden">
-      
-     
+
+
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply opacity-20 animate-pulse"></div>
 
-      {/* Header */}
+
       <div className="flex flex-col items-center text-center mb-6 relative z-10">
         <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg bg-gray-50 mb-2">
           <Image src="/logo.png" alt="logo" width={80} height={80} className="object-cover" />
@@ -86,7 +86,6 @@ export default function InterviewComplete({ interviewId }) {
         <p className="text-gray-600 mt-1">AI-Powered Interview Platform</p>
       </div>
 
-      {/* Candidate Info */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 relative z-10">
         <h2 className="text-xl font-bold text-gray-700">Candidate Name: {username}</h2>
         <div className="bg-white px-5 py-2 rounded-2xl shadow-md flex items-center gap-2 font-bold text-lg">
@@ -94,13 +93,11 @@ export default function InterviewComplete({ interviewId }) {
         </div>
       </div>
 
-      {/* Total Score */}
       <div className="bg-white p-4 rounded-2xl shadow-md flex justify-between items-center mb-6 relative z-10">
         <span className="font-semibold text-indigo-700">Total Score</span>
         <span className="font-bold text-gray-900 text-xl">{totalScore} / 40</span>
       </div>
 
-      {/* Skills */}
       <div className="mb-8 relative z-10">
         <h3 className="font-semibold text-gray-800 text-lg mb-4">Skills Evaluation</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -123,7 +120,7 @@ export default function InterviewComplete({ interviewId }) {
         </div>
       </div>
 
-      {/* Summary */}
+
       <div className="mb-8 relative z-10">
         <h3 className="font-semibold text-gray-800 text-lg mb-2">Performance Summary</h3>
         <p className="bg-white p-4 rounded-2xl shadow-md text-gray-700 text-sm leading-relaxed">
@@ -131,13 +128,12 @@ export default function InterviewComplete({ interviewId }) {
         </p>
       </div>
 
-      {/* Recommendation */}
+
       <div
-        className={`p-5 rounded-2xl shadow-md flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 ${
-          recommendation.toLowerCase() === "yes"
+        className={`p-5 rounded-2xl shadow-md flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 ${recommendation.toLowerCase() === "yes"
             ? "bg-green-50 border border-green-200"
             : "bg-red-50 border border-red-200"
-        } relative z-10`}
+          } relative z-10`}
       >
         <div>
           <h4 className={`font-semibold flex items-center gap-2 mb-1 ${recommendation.toLowerCase() === "yes" ? "text-green-700" : "text-red-700"}`}>
@@ -157,7 +153,6 @@ export default function InterviewComplete({ interviewId }) {
         )}
       </div>
 
-      {/* Dashboard Button */}
       <div className="flex justify-center mt-8 relative z-10">
         <button
           onClick={() => router.push("/dashboard")}
