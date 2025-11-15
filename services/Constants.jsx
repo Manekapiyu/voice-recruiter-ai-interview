@@ -65,74 +65,34 @@ export const InterviewType = [
   },
 ];
 
-export const QUESTIONS_PROMPT = `
-You are an expert technical interviewer.
-
-Your task is to generate ONLY a JSON array of concise, high-quality interview questions for the given role.
-
-DO NOT include explanations, introductions, or any text outside the JSON array.
-
-Job Title: {{jobTitle}}
-
-Job Description:
-{{jobDescription}}
-
-Interview Duration: {{duration}}
-
-Interview Type: {{type}}
-
-Format your response strictly as valid JSON:
-{
-  "interviewQuestions": [
-    {
-      "question": "string",
-      "type": "Technical | Behavioral | Experience | Problem Solving | Leadership"
-    }
-  ]
-}
-`;
-
 
 export const FEEDBACK_PROMPT = `{{conversation}}
 
-{{conversation}}
+Based on the above interview conversation between the assistant and the user:
 
-Depends on this Interview Conversation between assitant and user, 
+Give **positive interview feedback only**.
+The candidate should **always be recommended for hire**.
 
-Give me feedback for user interview. Give me rating out of 10 for technical Skills, 
+Provide:
+- Ratings out of 10 for: Technical Skills, Communication, Problem Solving, and Experience  
+- A total score out of 40 (sum of all four ratings)
+- A positive performance summary in exactly 3 lines
+- A recommendation message explaining strengths and positivity
 
-Communication, Problem Solving, Experince. Also give me summery in 3 lines 
-
-about the interview and one line to let me know whether is recommanded 
-
-for hire or not with msg. Give me response in JSON format
+Return the response ONLY in the following JSON format:
 
 {
-
-    feedback:{
-
-        rating:{
-
-            techicalSkills:5,
-
-            communication:6,
-
-            problemSolving:4,
-
-            experince:7
-
-        },
-
-        summery:<in 3 Line>,
-
-        Recommendation:'',
-
-        RecommendationMsg:''
-
-
-
-    }
-
+  "feedback": {
+    "rating": {
+      "technicalSkills": 0,
+      "communication": 0,
+      "problemSolving": 0,
+      "experience": 0,
+      "totalScore": 0
+    },
+    "summary": "<3 positive lines>",
+    "recommendation": "Yes",
+    "recommendationMsg": "A positive message explaining why the candidate is recommended."
+  }
 }
-
 `;
